@@ -1,21 +1,27 @@
 /* Basic styles */
 
-
-.table-container {
-    overflow-x: auto;
-    position: relative;
-    /* Needed for proper dropdown positioning */
-}
-
 .action-bar {
     display: flex;
     align-items: center;
-    padding: 5px 10px;
-    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    padding: 0px 0px;
+    border-top: 1px solid #ddd;
+}
+.action-bar .action-button{
+    padding: 8px 15px;
+    background: #d8dce1;
+    border: none;
+    color: rgb(58, 58, 58);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.action-bar .actions{
+    display: flex;
+    gap: 0 5px;
 }
 
-.dropdown{
-    width: 200px;
+
+.dropdown{    
     position: relative;
     z-index: 9999;
     background-color: white;
@@ -25,18 +31,28 @@
     cursor: pointer;
 }
 .dropdown-menu {
-    display: none;
+    min-width: 100%;
+    width: auto;
+    
+    display: none;    
     /* Initially hidden */
     position: absolute;
     top: 100%;
+    right: 0;
     /* Position below the toggle element */
-    left: 0;
+    /* left: 0; */
     background-color: #fff;
     list-style: none;
     padding: 5px 0;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-top: 0;
+}
+
+.dropdown-menu.column-list{
+    overflow-y: scroll;
+    max-height: 600px;
+    width: 250px;
 }
 
 .dropdown.active .dropdown-menu {
@@ -47,6 +63,11 @@
 
 .dropdown-menu li {
     padding: 5px 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+    color: #666;
 }
 
 .dropdown-menu li:hover {
@@ -62,13 +83,18 @@
     cursor: pointer;
 }
 
+.dropdown-hover .dropdown-menu{
+    display: none;
+
+}
+.dropdown-hover:hover .dropdown-menu{
+    display: block;
+
+}
 
 table {
     border-collapse: collapse;
     width: 100%;
-}
-thead th {
-    
 }
 
 th,
@@ -76,13 +102,14 @@ td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    white-space: nowrap;
+    font-size: 13px;
 }
 
 table.dataTable thead th {
     color: #666;
     font-weight: 400;
     background-color: #f2f2f2;
-
 
     white-space: nowrap;
     /* Prevent text wrapping */
@@ -102,41 +129,42 @@ table.dataTable td.dt-type-date {
     text-align: left;
 }
 
-table.dataTable thead>tr>th.dt-orderable-asc,
-table.dataTable thead>tr>th.dt-orderable-desc,
-table.dataTable thead>tr>th.dt-ordering-asc {
-    position: sticky;
-
-}
-
 tr th:first-child,
 tr td:first-child {
-    position: sticky;
-    left: 0;
     z-index: 9998;
-    /* Fix the left position */
 }
 
-tr td:first-child {
+table.dataTable tr td:first-child {
     background-color: white;
 }
 
+.table-container {
+    overflow-x: auto;
+    position: relative;
+    /* Needed for proper dropdown positioning */
+}
+
+
 /* Custom scrollbar */
 .table-container::-webkit-scrollbar {
-    width: 12px;
-    height: 10px;
+    
 }
 
 .table-container::-webkit-scrollbar-track {
     background: #f1f1f1;
     
 }
-
-.table-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 6px;
+.table-container::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    -webkit-border-radius: 3px;
 }
 
-.table-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
+.table-container::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    height: 20px;
+    background-color: #cccccc;
+    -webkit-border-radius: 7px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
 }

@@ -7,32 +7,43 @@
     <title>Custom Table</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.4/css/dataTables.dataTables.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.0.4/js/dataTables.js"></script>    
+    <script src="https://cdn.datatables.net/fixedcolumns/5.0.0/js/dataTables.fixedColumns.js"></script>    
+    <script src="https://cdn.datatables.net/fixedcolumns/5.0.0/js/fixedColumns.dataTables.js"></script>    
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-    <!-- <div class="action-bar">
-        <div class="dropdown">
-            <button class="dropbtn">Columns <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">                
-            </div>
-        </div>
-    </div> -->
-
     <div class="action-bar">
         <!-- <ul class="dropdown-menu"> </ul> -->
-        <div class="dropdown">
-            <span class="dropdown-toggle">Dropdown</span>
-
-            <ul class="dropdown-menu">
-            </ul>
+        <div class="actions">
+            <button class="action-button">Add</button>
+            <button class="action-button">Delete</button>
+            <button class="action-button">New Area</button>
+            <button class="action-button">Clear Pending Command</button>
+            <div class="dropdown data-clean-dropdown dropdown-hover">
+                <button class="dropdown-toggle data-clean-dropdown-toggle action-button">Data Clean</button>
+            
+                <ul class="dropdown-menu data-clean-list">
+                    <li>Data</li>
+                </ul>
+            </div>
         </div>
+
+        <div class="actions">
+            <div class="dropdown columns-dropdown">
+                <button class="dropdown-toggle columns-dropdown-toggle action-button">Columns</button>
+            
+                <ul class="dropdown-menu column-list">
+                </ul>
+            </div>
+        </div>
+       
     </div>    
 
     <div class="table-container">        
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th><input type="checkbox"></th>

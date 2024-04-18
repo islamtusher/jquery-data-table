@@ -11,12 +11,12 @@ $(document).ready(function () {
   });
 
   // Clear the dropdown menu before populating (optional)
-  $(".dropdown-menu").empty();
+  $(".column-list").empty();
 
   // Populate dropdown menu items
   $.each(tableHeaders, function (index, value) {
     if (index !== 0) {
-      $(".dropdown-menu").append(
+      $(".column-list").append(
         '<li><input data-index="' +
           index +
           '" type="checkbox" checked>' +
@@ -26,48 +26,46 @@ $(document).ready(function () {
     }
   });
 
-    // Toggle dropdown menu on click
-    $(".dropdown-toggle").on("click", function () {
-        console.log('click')
-      $(this).parent(".dropdown").toggleClass("active");
-    });
+  // Toggle dropdown menu on click
+  $(".columns-dropdown-toggle").on("click", function () {
+    $(this).parent(".columns-dropdown").toggleClass("active");
+  });
 
-    // Close dropdown menu on click outside (event delegation)
-    $(document).on("click", function (event) {
-        if (
-        !$(event.target).closest(".dropdown").length &&
-        $(".dropdown").hasClass("active")
-        ) {
-        $(".dropdown").removeClass("active");
-        }
-    });
+  // Close dropdown menu on click outside (event delegation)
+  $(document).on("click", function (event) {
+      if (
+      !$(event.target).closest(".columns-dropdown").length &&
+      $(".columns-dropdown").hasClass("active")
+      ) {
+      $(".columns-dropdown").removeClass("active");
+      }
+  });
 
-    let hiddenColumns = []; // Array to store indexes of hidden columns
-    $("table thead th").each(function () {
-        let index = $(this).index();
-        tableHeaders.push($(this).text());
-        hiddenColumns.push(false); // Initially, all columns are visible
-    });
-    console.log(hiddenColumns);
+  let hiddenColumns = []; // Array to store indexes of hidden columns
+  $("table thead th").each(function () {
+      let index = $(this).index();
+      tableHeaders.push($(this).text());
+      hiddenColumns.push(false); // Initially, all columns are visible
+  });
 
-    // Log item index on click
-    $(".dropdown-menu li input").click(function () {
-        let clickedIndex = $(this).data("index");
-        hiddenColumns[clickedIndex] = !$(this).is(":checked"); // Toggle hidden state based on checkbox
-        console.log(hiddenColumns);
-        console.log("Clicked item index:", hiddenColumns[clickedIndex]);
+  // Log item index on click
+  $(".column-list li input").click(function () {
+      let clickedIndex = $(this).data("index");
+      hiddenColumns[clickedIndex] = !$(this).is(":checked"); // Toggle hidden state based on checkbox
+      console.log(hiddenColumns);
+      console.log("Clicked item index:", hiddenColumns[clickedIndex]);
 
-        // Update table visibility
-        $("table thead th:eq(" + clickedIndex + ")").toggle();
-        $("table tbody tr").each(function () {
-        $(this)
-            .find("td:eq(" + clickedIndex + ")")
-            .toggle();
-        });
-    });
+      // Update table visibility
+      $("table thead th:eq(" + clickedIndex + ")").toggle();
+      $("table tbody tr").each(function () {
+      $(this)
+          .find("td:eq(" + clickedIndex + ")")
+          .toggle();
+      });
+  });
 });
-    
-new DataTable("#example", {
+
+let table = new DataTable("#example", {
   layout: {
     bottomEnd: {
       paging: {
@@ -75,4 +73,17 @@ new DataTable("#example", {
       },
     },
   },
+  columnDefs: [
+    {
+      sortable: false,
+      targets: 0,
+    },
+  ],
+  fixedColumns: true,
+  order: [[1, "asc"]],
+  paging: false,
+  scrollCollapse: true,
+  scrollX: true,
+  scrollY: 300,
+  dom: 't<"clear">', // Remove the default toolbar
 });
