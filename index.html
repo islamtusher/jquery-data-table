@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.4/css/dataTables.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.4/js/dataTables.js"></script>    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- <div class="action-bar">
+        <div class="dropdown">
+            <button class="dropbtn">Columns <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">                
+            </div>
+        </div>
+    </div> -->
+
+    <div class="action-bar">
+        <!-- <ul class="dropdown-menu"> </ul> -->
+        <div class="dropdown">
+            <span class="dropdown-toggle">Dropdown</span>
+
+            <ul class="dropdown-menu">
+            </ul>
+        </div>
+    </div>    
+
+    <div class="table-container">        
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Device Name</th>
+                    <th>Serial Number</th>
+                    <th>Area</th>
+                    <th>Device IP</th>
+                    <th>Real IP</th>
+                    <th>Device Model</th>
+                    <th>Time Zone</th>
+                    <th>Firmware Version</th>
+                    <th>Push Version</th>
+                    <th>Push Protocol</th>
+                    <th>State</th>
+                    <th>Last Activity</th>
+                    <th>User Qty.</th>
+                    <th>FP Qty.</th>
+                    <th>Face Qty.</th>
+                    <th>Palm Qty.</th>
+                    <th>Transaction Qty.</th>
+                    <th>Last Sync</th>
+                    <th>Cmd</th>
+                    <th>Device Parameter</th>
+                    <th>Supports Access Control</th>
+                    <th>Enable Access Control</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Device 1</td>
+                    <td>123456</td>
+                    <td>Area A</td>
+                    <td>192.168.1.100</td>
+                    <td>192.168.1.200</td>
+                    <td>Model X</td>
+                    <td>UTC+5:00</td>
+                    <td>v1.0</td>
+                    <td>v2.0</td>
+                    <td>HTTP</td>
+                    <td>Active</td>
+                    <td>2024-04-17 10:30:00</td>
+                    <td>10</td>
+                    <td>50</td>
+                    <td>20</td>
+                    <td>5</td>
+                    <td>100</td>
+                    <td>2024-04-17 10:30:00</td>
+                    <td>Reboot</td>
+                    <td>Default</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+
+                <!-- Table content will be dynamically added here using jQuery -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

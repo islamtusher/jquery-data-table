@@ -1,0 +1,142 @@
+/* Basic styles */
+
+
+.table-container {
+    overflow-x: auto;
+    position: relative;
+    /* Needed for proper dropdown positioning */
+}
+
+.action-bar {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown{
+    width: 200px;
+    position: relative;
+    z-index: 9999;
+    background-color: white;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+.dropdown-menu {
+    display: none;
+    /* Initially hidden */
+    position: absolute;
+    top: 100%;
+    /* Position below the toggle element */
+    left: 0;
+    background-color: #fff;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+}
+
+.dropdown.active .dropdown-menu {
+    /* Add a new style rule */
+    display: block;
+    /* Show menu on click (toggle with active class) */
+}
+
+.dropdown-menu li {
+    padding: 5px 10px;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-menu li input {
+    padding: 10px;
+    width: 20px;
+    height: 15px;
+}
+.dropdown-menu li input:hover {
+    cursor: pointer;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+thead th {
+    
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table.dataTable thead th {
+    color: #666;
+    font-weight: 400;
+    background-color: #f2f2f2;
+
+
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    overflow: hidden;
+    /* Hide overflowing content */
+    text-overflow: ellipsis;
+    /* Add ellipsis for truncated text */
+    max-width: [desired width in pixels or percentage];
+    /* Set your fixed width */
+}
+table.dataTable td {
+    text-align: left;
+}
+
+table.dataTable td.dt-type-numeric,
+table.dataTable td.dt-type-date {
+    text-align: left;
+}
+
+table.dataTable thead>tr>th.dt-orderable-asc,
+table.dataTable thead>tr>th.dt-orderable-desc,
+table.dataTable thead>tr>th.dt-ordering-asc {
+    position: sticky;
+
+}
+
+tr th:first-child,
+tr td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 9998;
+    /* Fix the left position */
+}
+
+tr td:first-child {
+    background-color: white;
+}
+
+/* Custom scrollbar */
+.table-container::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
