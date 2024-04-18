@@ -33,35 +33,60 @@ $(document).ready(function () {
 
   // Close dropdown menu on click outside (event delegation)
   $(document).on("click", function (event) {
-      if (
+    if (
       !$(event.target).closest(".columns-dropdown").length &&
       $(".columns-dropdown").hasClass("active")
-      ) {
+    ) {
       $(".columns-dropdown").removeClass("active");
-      }
+    }
   });
 
   let hiddenColumns = []; // Array to store indexes of hidden columns
   $("table thead th").each(function () {
-      let index = $(this).index();
-      tableHeaders.push($(this).text());
-      hiddenColumns.push(false); // Initially, all columns are visible
+    let index = $(this).index();
+    tableHeaders.push($(this).text());
+    hiddenColumns.push(false); // Initially, all columns are visible
   });
 
   // Log item index on click
   $(".column-list li input").click(function () {
-      let clickedIndex = $(this).data("index");
-      hiddenColumns[clickedIndex] = !$(this).is(":checked"); // Toggle hidden state based on checkbox
-      console.log(hiddenColumns);
-      console.log("Clicked item index:", hiddenColumns[clickedIndex]);
+    let clickedIndex = $(this).data("index");
+    hiddenColumns[clickedIndex] = !$(this).is(":checked"); // Toggle hidden state based on checkbox
+    console.log(hiddenColumns);
+    console.log("Clicked item index:", hiddenColumns[clickedIndex]);
 
-      // Update table visibility
-      $("table thead th:eq(" + clickedIndex + ")").toggle();
-      $("table tbody tr").each(function () {
+    // Update table visibility
+    $("table thead th:eq(" + clickedIndex + ")").toggle();
+    $("table tbody tr").each(function () {
       $(this)
-          .find("td:eq(" + clickedIndex + ")")
-          .toggle();
+        .find("td:eq(" + clickedIndex + ")")
+        .toggle();
+    });
+  });
+
+  // Attach a click event handler to any element you want to track
+  $(document).on("click", ".tabel-action-toggle", function (event) {
+    var clickedElement = $(this);
+
+    // Get the left and top position of the clicked element relative to the document
+    var leftPosition = clickedElement.offset().left;
+    var topPosition = clickedElement.offset().top;
+
+    // Optionally, log the positions to the console or use them for further actions
+    console.log("Left position:", leftPosition+"px");
+    console.log("Top position:", topPosition + "px");
+    
+    $(this)
+      .parent(".table-action-dropdown")
+      .find(".table-actions-menu")
+      .css({
+        left: leftPosition + "px",
+        top:( topPosition + 25) + "px",
       });
+
+    // You can also use these positions for other purposes, like:
+    // - Displaying a tooltip or popup at the clicked location
+    // - Triggering an animation based on the clicked element's position
   });
 });
 

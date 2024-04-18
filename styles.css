@@ -23,8 +23,7 @@
 
 .dropdown{    
     position: relative;
-    z-index: 9999;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .dropdown-toggle {
@@ -33,7 +32,7 @@
 .dropdown-menu {
     min-width: 100%;
     width: auto;
-    
+    z-index: 99;
     display: none;    
     /* Initially hidden */
     position: absolute;
@@ -84,12 +83,16 @@
 }
 
 .dropdown-hover .dropdown-menu{
-    display: none;
+    display: hide;
 
 }
 .dropdown-hover:hover .dropdown-menu{
     display: block;
 
+}
+
+table tbody tr td .table-data-action{
+    
 }
 
 table {
@@ -131,7 +134,7 @@ table.dataTable td.dt-type-date {
 
 tr th:first-child,
 tr td:first-child {
-    z-index: 9998;
+    z-index: 100;
 }
 
 table.dataTable tr td:first-child {
@@ -141,13 +144,8 @@ table.dataTable tr td:first-child {
 .table-container {
     overflow-x: auto;
     position: relative;
+    overflow-y: visible;
     /* Needed for proper dropdown positioning */
-}
-
-
-/* Custom scrollbar */
-.table-container::-webkit-scrollbar {
-    
 }
 
 .table-container::-webkit-scrollbar-track {
@@ -167,4 +165,14 @@ table.dataTable tr td:first-child {
     outline: 2px solid #fff;
     outline-offset: -2px;
     border: 2px solid #fff;
+}
+
+.dropdown.table-action-dropdown{
+    position: relative;
+}
+.table-actions-menu{
+    position: fixed;
+    max-width: 150px;
+    min-width: 150px;
+    clear: both;
 }
