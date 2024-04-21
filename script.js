@@ -27,17 +27,20 @@ $(document).ready(function () {
   });
 
   // Toggle dropdown menu on click
-  $(".columns-dropdown-toggle").on("click", function () {
-    $(this).parent(".columns-dropdown").toggleClass("active");
+  $(".dropdown-toggle").on("click", function () {
+    let dropdown = $(this).parent(".dropdown");
+    $('.dropdown').not(dropdown).removeClass('active');    
+    $(this).parent(".dropdown").toggleClass("active");
+    
   });
 
   // Close dropdown menu on click outside (event delegation)
   $(document).on("click", function (event) {
     if (
-      !$(event.target).closest(".columns-dropdown").length &&
-      $(".columns-dropdown").hasClass("active")
+      !$(event.target).closest(".dropdown").length &&
+      $(".dropdown").hasClass("active")
     ) {
-      $(".columns-dropdown").removeClass("active");
+      $(".dropdown").removeClass("active");
     }
   });
 
