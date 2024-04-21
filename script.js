@@ -6,7 +6,7 @@ $(document).ready(function () {
 
   // 1. Get table headers and store in an array
   let tableHeaders = [];
-  $("table thead th").each(function () {
+  $("table thead:first-child th").each(function () {
     tableHeaders.push($(this).text());
   });
 
@@ -30,8 +30,7 @@ $(document).ready(function () {
   $(".dropdown-toggle").on("click", function () {
     let dropdown = $(this).parent(".dropdown");
     $('.dropdown').not(dropdown).removeClass('active');    
-    $(this).parent(".dropdown").toggleClass("active");
-    
+    $(this).parent(".dropdown").toggleClass("active");    
   });
 
   // Close dropdown menu on click outside (event delegation)
