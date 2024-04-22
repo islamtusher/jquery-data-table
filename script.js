@@ -108,9 +108,10 @@ let table = new DataTable("#example", {
   ],
   fixedColumns: true,
   order: [[1, "asc"]],
-  paging: false,
+  // paging: true,
+  pagingType: 'simple_numbers',
   scrollCollapse: true,
   scrollX: true,
-  scrollY: 300,
-  dom: 't<"clear">', // Remove the default toolbar
+  // scrollY: 300,
+  // dom: 't<"clear">', // Remove the default toolbar
 });
