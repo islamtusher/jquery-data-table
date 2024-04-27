@@ -1,3 +1,32 @@
+// Initialize DataTables on the table
+
+let table = new DataTable("#example", {
+  layout: {
+    bottomEnd: {
+      paging: {
+        boundaryNumbers: false,
+      },
+    },
+  },
+  columnDefs: [
+    {
+      sortable: false,
+      targets: 0,
+    },
+  ],
+  fixedColumns: true,
+  order: [[1, "asc"]],
+  pagingType: "simple_numbers",
+  scrollCollapse: true,
+  scrollX: true,
+  select: {
+    style: "multi",
+  },
+  responsive: true,
+  // scrollY: 300,
+  // dom: 't<"clear">', // Remove the default toolbar
+});
+
 $(document).ready(function () {
   // Your jQuery code here (e.g., highlighting rows on hover)
   $("tbody tr").hover(function () {
@@ -29,8 +58,8 @@ $(document).ready(function () {
   // Toggle dropdown menu on click
   $(".dropdown-toggle").on("click", function () {
     let dropdown = $(this).parent(".dropdown");
-    $('.dropdown').not(dropdown).removeClass('active');    
-    $(this).parent(".dropdown").toggleClass("active");    
+    $(".dropdown").not(dropdown).removeClass("active");
+    $(this).parent(".dropdown").toggleClass("active");
   });
 
   // Close dropdown menu on click outside (event delegation)
@@ -75,43 +104,47 @@ $(document).ready(function () {
     var topPosition = clickedElement.offset().top;
 
     // Optionally, log the positions to the console or use them for further actions
-    console.log("Left position:", leftPosition+"px");
+    console.log("Left position:", leftPosition + "px");
     console.log("Top position:", topPosition + "px");
-    
+
     $(this)
       .parent(".table-action-dropdown")
       .find(".table-actions-menu")
       .css({
         left: leftPosition + "px",
-        top:( topPosition + 25) + "px",
+        top: topPosition + 25 + "px",
       });
 
     // You can also use these positions for other purposes, like:
     // - Displaying a tooltip or popup at the clicked location
     // - Triggering an animation based on the clicked element's position
   });
+
+  var table = $("#example").DataTable();
+
+  // Attach click event handler to table rows (tbody)
+  $("#example tbody tr").click(function () {
+    // Get the ID of the clicked row
+    var rowId = table.row(this).id();
+
+    // Check if ID exists before using it
+    if (rowId) {
+      console.log("Clicked row ID:", rowId);
+    } else {
+      console.log("Clicked row doesn't have an ID");
+    }
+  });
+
+  // Attach click event handler to the checkbox in thead
+  $('table thead th:first-child input[type="checkbox"]').click(function () {
+    // Get the checked state of the clicked checkbox
+    var isChecked = $(this).is(":checked");
+
+    // Apply the checked state to all checkboxes in the first column of tbody
+    $('table tbody td:first-child input[type="checkbox"]').prop(
+      "checked",
+      isChecked
+    );
+  });
 });
 
-let table = new DataTable("#example", {
-  layout: {
-    bottomEnd: {
-      paging: {
-        boundaryNumbers: false,
-      },
-    },
-  },
-  columnDefs: [
-    {
-      sortable: false,
-      targets: 0,
-    },
-  ],
-  fixedColumns: true,
-  order: [[1, "asc"]],
-  // paging: true,
-  pagingType: 'simple_numbers',
-  scrollCollapse: true,
-  scrollX: true,
-  // scrollY: 300,
-  // dom: 't<"clear">', // Remove the default toolbar
-});
